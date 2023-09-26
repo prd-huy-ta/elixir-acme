@@ -106,9 +106,18 @@ defmodule Acme.Products do
   Get total inventory cost of a product.
   """
   def get_inventory_cost(id) do
-    product = Repo.get!(Product, id)
+    product =
+      Repo.get!(Product, id)
+       |>Map.from_struct
+
     %{quantity: quantity, unit_cost: unit_cost} = product
-    %{product: product, total_cost: quantity * unit_cost}
+
+    product_with_cost = product
+    |> Map.take([:id, :name, :description, :category, :quantity, :unit_cost])
+    |> Map.put(:total_inventory_cost, quantity * unit_cost)
+
+    %{product_with_cost: product_with_cost}
+
   end
 
 end
