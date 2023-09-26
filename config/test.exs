@@ -9,7 +9,7 @@ config :acme, Acme.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "acme_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "acme_test",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 

@@ -101,4 +101,14 @@ defmodule Acme.Products do
   def change_product(%Product{} = product, attrs \\ %{}) do
     Product.changeset(product, attrs)
   end
+
+  @doc """
+  Get total inventory cost of a product.
+  """
+  def get_inventory_cost(id) do
+    product = Repo.get!(Product, id)
+    %{quantity: quantity, unit_cost: unit_cost} = product
+    %{product: product, total_cost: quantity * unit_cost}
+  end
+
 end

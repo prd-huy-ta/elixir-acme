@@ -20,4 +20,17 @@ defmodule AcmeWeb.ProductView do
       unit_cost: product.unit_cost
     }
   end
+
+  def render("cost.json", %{product: product, total_cost: total_cost}) do
+    %{
+    id: product.id,
+    name: product.name,
+    description: product.description,
+    category: product.category,
+    quantity: product.quantity,
+    unit_cost: product.unit_cost,
+    total_inventory_cost: total_cost
+    }
+  end
+
 end

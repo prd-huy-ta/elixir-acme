@@ -1,0 +1,6 @@
+deps/
+deps/**/*.ex
+_build/
+.idea/
+priv/static/assets/app.css
+priv/static/assets/app.js
